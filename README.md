@@ -1,1 +1,1 @@
-# Inventory-Application
+Create a simple Inventory-Application using Express.js, Postgresql
