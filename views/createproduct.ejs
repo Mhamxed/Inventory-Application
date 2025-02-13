@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Create Product</title>
+</head>
+<body>
+    <div class="create-product">
+        <%- include('partials/navbar') %>
+        <form action="/products/create" method="post">
+            <h2>Create a new product</h2> 
+            <div class="input">
+                <label for="title">Title</label>
+                <input type="text" id="title" placeholder="Face mask" name="title">
+            </div>
+            <div class="image">
+                <input type="file" accept="image/*" id="image">
+            </div>
+            <div class="input">
+                <label for="stock">Stock</label>
+                <input type="number" id="stock" placeholder="5" name="stock">
+            </div>
+            <div class="input">
+                <label for="catergory">Category</label>
+                <input type="text" id="catergory" placeholder="Home Improvement" name="category">
+            </div>
+            <button type="submit">Create</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>Products</title>
+</head>
+<body>
+    <div class="products-page">
+        <%- include('partials/navbar') %>
+        <div class="pro">
+            <button class="add"><a href="/products/create">Add product</a></button>
+            <div class="products">
+                <%products.forEach(product => {%>
+                    <div class="product">
+                        <img src = <%= product.image%>>
+                        <p><%= product.title%></p>
+                        <p>Stock: <%= product.stock%></p>
+                    </div>
+                <%})%>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
