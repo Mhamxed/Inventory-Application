@@ -9,7 +9,7 @@
 <body>
     <div class="create-product">
         <%- include('partials/navbar') %>
-        <form action="/products/create" 
+        <form action="/products/edit/<%= id%>" 
         method="post" 
         enctype="multipart/form-data">
             <h2>Create a new product</h2> 
@@ -18,7 +18,8 @@
                 <input type="text" 
                 id="title" 
                 placeholder="Face mask" 
-                name="title">
+                name="title"
+                value="<%= title%>">
                 <p class="err"><%= titleErr %></p>
             </div>
             <div class="image">
@@ -33,7 +34,8 @@
                 <input type="number" 
                 id="stock" 
                 placeholder="5" 
-                name="stock">
+                name="stock"
+                value="<%=stock%>">
                 <p class="err"><%= stockErr %></p>
             </div>
             <div class="input">
@@ -42,10 +44,11 @@
                 type="text" 
                 id="catergory" 
                 placeholder="Home Improvement" 
-                name="category">
+                name="category"
+                value="<%= category%>">
                 <p class="err"><%= categoryErr %></p>
             </div>
-            <button type="submit">Create</button>
+            <button type="submit">Update product</button>
         </form>
     </div>
 </body>

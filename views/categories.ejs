@@ -13,7 +13,17 @@
             <button class="add"><a href="/categories/create">Add category</a></button>
             <div class="categories">
                 <% categories.forEach(category => { %>
-                    <button class="catergory"> <%= category.name %></button>
+                    <div class="catergory">
+                        <p><%= category.name %></p>
+                        <div class="buttons">
+                            <button class="delete-category">
+                                <a href="/categories/edit/<%= category.id%>">Edit</a>
+                            </button>
+                            <button class="delete-category">
+                                <a href="/categories/delete/<%= category.id%>">Delete</a>
+                            </button>
+                        </div>
+                    </div>
                 <%})%>
             </div>
         </div>
