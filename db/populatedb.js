@@ -1,11 +1,11 @@
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 
 const drop_products = `
-DROP TABLE products;
+DROP TABLE IF EXISTS products;
 `
 
 const drop_categories = `
-DROP TABLE categories;
+DROP TABLE IF EXISTS categories;
 `
 
 const create_categories_table = `
@@ -22,7 +22,7 @@ const create_products_table = `
     image TEXT,
     stock INTEGER,
     category_id INTEGER,
-    FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
+    FOREIGN KEY (category_id) REFERENCES categories(id)
     );
 `
 
@@ -59,16 +59,22 @@ const add_products = `
 async function populateDB() {
     const { Client } = require('pg')
     const client = new Client({
-        host: process.env.HOST,
-        port: process.env.DB_PORT,
-        user: process.env.USER,
-        password: process.env.PASSWORD,
-        database: process.env.DATABASE,
+      user: process.env.USER,
+      host: process.env.HOST,
+      database: process.env.DATABASE,
+      password: process.env.PASSWORD,
+      port: process.env.DB_PORT
     });
     try {
         await client.connect();
+        await client.query(drop_products)
+        await client.query(drop_categories)
+        await client.query(create_categories_table)
+        await client.query(create_products_table)
         await client.query(add_categories);
         await client.query(add_products);
+        await client.query("SELECT * FROM categories;")
+            .then(re => console.log(re.rows))
         await client.end();
     } catch (err) {
         console.log(err)

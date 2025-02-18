@@ -1,5 +1,5 @@
 const { Pool } = require('pg')
-require('dotenv').config();
+require('dotenv').config({ path: '../.env' });
 
 module.exports = new Pool({
     user: process.env.USER,

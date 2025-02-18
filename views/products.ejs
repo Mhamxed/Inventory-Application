@@ -16,7 +16,7 @@
                     <div class="product">
                         <img src = <%= product.image%>>
                         <p><%= product.title%></p>
-                        <p>Stock: <%= product.stock%></p>
+                        <p><%= product.stock%> units available</p>
                         <button class="delete-product">
                             <a href="/products/delete/<%= product.id%>">Delete</a>
                         </button>
