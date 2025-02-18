@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title> <%= category %>'s products</title>
+</head>
+<body>
+    <div class="products-page">
+        <%- include('partials/navbar') %>
+        <div class="pro">
+            <button class="add"><a href="/products/create">Add product</a></button>
+            <%if (products.length !== 0) {%>
+                <div class="products">
+                    <%products.forEach(product => {%>
+                        <div class="product">
+                            <img src = <%= product.image%>>
+                            <p><%= product.title%></p>
+                            <p><%= product.stock%> units available</p>
+                            <button class="delete-product">
+                                <a href="/products/delete/<%= product.id%>">Delete</a>
+                            </button>
+                            <button class="delete-product">
+                                <a href="/products/edit/<%= product.id%>">Edit</a>
+                            </button>
+                        </div>
+                </div>
+                <%})%>
+            <% } else { %>
+                <div class="no-product">
+                    <h2>No products were found in <%= category %></h2>
+                </div>
+            <%}%>
+        </div>
+    </div>
+</body>
+</html>
